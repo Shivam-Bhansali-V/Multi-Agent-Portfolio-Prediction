@@ -1,0 +1,7 @@
+Run time: 2026-10-07 16:59
+yfinance version: 1.4.1
+Requested: 103  OK: 103  FAILED: 0
+Failed: none
+Stocks whose history starts after 2015-01-10 (listed later): 23
+  ADANIENSOL, ADANIGREEN, DMART, BSE, ETERNAL, HDFCAMC, HDFCLIFE, HAL, POWERINDIA, HYUNDAI, IRFC, INDIGO, JIOFIN, LTM, MAXHEALTH, MAZDOCK, POLYCAB, SBILIFE, ENRIN, TATACAP, TMCV, VBL, VAML
+Latest data date (most common): 2026-10-07
