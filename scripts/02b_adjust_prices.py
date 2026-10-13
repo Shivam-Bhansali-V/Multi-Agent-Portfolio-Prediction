@@ -188,7 +188,7 @@ from __future__ import annotations
 
 import math
 from pathlib import Path
-from typing import Iterable, List, Optional, Sequence
+from typing import Dict, Iterable, List, Optional, Sequence
 
 import numpy as np
 import pandas as pd
@@ -452,7 +452,7 @@ def detect_prefolded_splits(
     margin: float = DEFAULT_PREFOLD_MARGIN,
     include_all_types: bool = False,
 ) -> pd.DataFrame:
-    """Measure the raw-Close move across each split ex-date and judge whether the split
+    """Measure the raw-Close move across each action ex-date and judge how much of it
     is ALREADY folded into ``Close``.
 
     This is the mechanism that empirically settles the audit's unconfirmed F03
@@ -460,16 +460,29 @@ def detect_prefolded_splits(
 
         observed = Close(prev bar) / Close(anchor bar)
 
-    against ``R_all`` (nothing folded) and ``R_all / R_split`` (the day's splits folded,
-    the day's bonuses/demergers not).  A hypothesis matches when its relative error is
-    within ``tol``; the two must differ by at least ``margin`` to be distinguishable.
+    against up to three hypotheses: ``NOT_FOLDED`` (R_all -- nothing folded),
+    ``PREFOLDED`` (R_all / R_split -- the day's splits folded, the day's
+    bonuses/demergers/rights not; only tested when the day has a split whose removal
+    changes the ratio), and ``FULLY_PREFOLDED`` (1.0 -- everything that day, split and
+    non-split alike, already folded into Close; only tested when it is numerically
+    distinct from the other candidates). A hypothesis matches when its relative error
+    is within ``tol``; the candidates must differ by at least ``margin`` (relative
+    spread) to be distinguishable at all.
 
-    ``verdict`` is one of NOT_FOLDED, PREFOLDED, AMBIGUOUS (neither or both matched --
-    the log-closer hypothesis is used and the rows are flagged), INSUFFICIENT_DATA (no
-    usable bar before the anchor, or the action is outside the series), or
-    NOT_DISTINGUISHABLE (the day has no usable split, so the question does not arise).
+    ``verdict`` is one of NOT_FOLDED, PREFOLDED, FULLY_PREFOLDED, AMBIGUOUS (zero or
+    multiple hypotheses matched -- the log-closer one is used for the apply decision
+    and the rows are flagged), INSUFFICIENT_DATA (no usable bar before the anchor, or
+    the action is outside the series), or NOT_DISTINGUISHABLE (the candidates are too
+    close together to tell apart).
 
-    ``apply_divisor`` is what ``split_policy="auto"`` would do with that row.
+    ``apply_divisor`` is what ``split_policy="auto"`` would do with that row:
+    NOT_FOLDED applies every row that day; PREFOLDED withholds the split rows only;
+    FULLY_PREFOLDED withholds every row that day (split AND non-split); AMBIGUOUS
+    follows whichever hypothesis is log-closer to the observed ratio; INSUFFICIENT_DATA
+    and NOT_DISTINGUISHABLE withhold (safe default -- unproven evidence no longer
+    licenses re-applying a divisor that may already be in the data; any resulting
+    residual discontinuity is caught downstream by ``assert_no_residual_discontinuity``
+    and the AMBIGUOUS/uncrossable AdjQuality flags instead of being silently fabricated).
     Rows with an unusable ratio are excluded -- they are uncrossable boundaries, not a
     detection problem.
 
@@ -510,36 +523,43 @@ def detect_prefolded_splits(
                 if np.isfinite(c_prev) and np.isfinite(c_anchor) and c_anchor > 0:
                     observed = float(c_prev / c_anchor)
 
+        has_split = bool(split_mask.any()) and abs(r_split - 1.0) >= 1e-12
+
+        # Build the candidate hypothesis set for this ex-date, deduping by value so a
+        # degenerate case (e.g. a pure split, where "split folded" and "fully folded"
+        # are numerically identical) does not get counted twice.
+        candidates: Dict[str, float] = {"NOT_FOLDED": r_all}
+        if has_split:
+            candidates["PREFOLDED"] = r_prefolded
+        if not any(abs(v - 1.0) < 1e-9 for v in candidates.values()):
+            candidates["FULLY_PREFOLDED"] = 1.0
+
         if not np.isfinite(observed) or observed <= 0:
             verdict = "INSUFFICIENT_DATA"
-            err_nf = err_pf = np.nan
-        elif not split_mask.any() or abs(r_split - 1.0) < 1e-12:
-            verdict = "NOT_DISTINGUISHABLE"
-            err_nf = abs(observed - r_all) / r_all
-            err_pf = err_nf
+            errs = {name: np.nan for name in candidates}
         else:
-            err_nf = abs(observed - r_all) / r_all
-            err_pf = abs(observed - r_prefolded) / r_prefolded
-            separation = abs(r_all - r_prefolded) / min(r_all, r_prefolded)
-            if separation < margin:
+            vals = list(candidates.values())
+            spread = (max(vals) - min(vals)) / min(vals) if min(vals) > 0 else 0.0
+            errs = {name: abs(observed - v) / v for name, v in candidates.items()}
+            if spread < margin:
                 verdict = "NOT_DISTINGUISHABLE"
             else:
-                hit_nf = err_nf <= tol
-                hit_pf = err_pf <= tol
-                if hit_nf and not hit_pf:
-                    verdict = "NOT_FOLDED"
-                elif hit_pf and not hit_nf:
-                    verdict = "PREFOLDED"
-                else:
-                    verdict = "AMBIGUOUS"
+                hits = [name for name, e in errs.items() if e <= tol]
+                verdict = hits[0] if len(hits) == 1 else "AMBIGUOUS"
 
-        # Log-space tie-break, used for AMBIGUOUS and as the auto decision.
+        err_nf = errs.get("NOT_FOLDED", np.nan)
+        # "rel_err_prefolded" is kept for schema/backward-compat: the best error among
+        # the non-"nothing folded" candidates (whichever of PREFOLDED/FULLY_PREFOLDED
+        # exists and fits best).
+        folded_errs = [e for name, e in errs.items() if name != "NOT_FOLDED" and np.isfinite(e)]
+        err_pf = min(folded_errs) if folded_errs else np.nan
+
+        # Log-space tie-break among whichever candidates exist, used for AMBIGUOUS and
+        # as the fallback when the hit set is empty.
         if np.isfinite(observed) and observed > 0:
-            d_nf = abs(math.log(observed) - math.log(r_all))
-            d_pf = abs(math.log(observed) - math.log(r_prefolded))
-            closer_not_folded = d_nf <= d_pf
+            closest = min(candidates, key=lambda name: abs(math.log(observed) - math.log(candidates[name])))
         else:
-            closer_not_folded = True  # no evidence -> keep the action (see auto policy)
+            closest = "NOT_FOLDED"  # no evidence -> see safe-default note below
 
         for _, row in grp.iterrows():
             is_split = row["action_type"] == "split"
@@ -547,10 +567,19 @@ def detect_prefolded_splits(
                 apply_divisor = True
             elif verdict == "PREFOLDED":
                 apply_divisor = not is_split
-            elif verdict in ("INSUFFICIENT_DATA", "NOT_DISTINGUISHABLE"):
-                apply_divisor = True
-            else:  # AMBIGUOUS
-                apply_divisor = True if closer_not_folded else (not is_split)
+            elif verdict == "FULLY_PREFOLDED":
+                apply_divisor = False
+            elif verdict == "AMBIGUOUS":
+                if closest == "NOT_FOLDED":
+                    apply_divisor = True
+                elif closest == "PREFOLDED":
+                    apply_divisor = not is_split
+                else:  # closest == "FULLY_PREFOLDED"
+                    apply_divisor = False
+            else:  # INSUFFICIENT_DATA, NOT_DISTINGUISHABLE -- safe default: do not
+                   # re-apply a divisor that unproven evidence cannot rule out is
+                   # already folded into Close (see docstring).
+                apply_divisor = False
             if not include_all_types and not is_split:
                 continue
             out.append({
@@ -622,14 +651,17 @@ def _applied_actions(df: pd.DataFrame, acts: pd.DataFrame, symbol: str,
         structural["apply"] = True
     elif split_policy == "never":
         structural["apply"] = structural["action_type"] != "split"
-    else:  # auto -- splits gated by the detector, everything else always applied
+    else:  # auto -- every structural row (split, bonus, demerger, rights) is gated by
+           # the detector's per-ex-date verdict. A row the detector has no opinion on
+           # (shouldn't normally happen since detect() is called with
+           # include_all_types=True over the same `structural` universe) defaults to
+           # applied, matching the NOT_FOLDED/no-evidence-against-it assumption.
         auto = {}
         if not detect.empty:
             for _, r in detect.iterrows():
                 auto[(r["ex_date"], r["action_type"], float(r["ratio"]))] = bool(r["apply_divisor"])
         structural["apply"] = [
             auto.get((row["ex_date"], row["action_type"], float(row["ratio"])), True)
-            if row["action_type"] == "split" else True
             for _, row in structural.iterrows()
         ]
 
@@ -1209,6 +1241,45 @@ def _selftest_bajajfinsv_same_day() -> None:
            float(np.nanmax(adj_pf['AdjClose'].pct_change().abs().to_numpy())) < 1e-12)
 
 
+def _selftest_fully_prefolded_combo() -> None:
+    """Regression test for the real production bug: Yahoo's raw Close is already
+    adjusted for BOTH the split and the bonus (the common real-world case for NSE
+    data), so the combined R=10 is fully folded already. The pre-fix code applied the
+    split divisor conditionally but the bonus divisor unconditionally, fabricating a
+    spurious +108%-style jump across the ex-date on real BAJAJFINSV data. This proves
+    that is fixed: with nothing left to fold, 'auto' must apply neither divisor."""
+    print("\n--- BAJAJFINSV: fully prefolded same-day split+bonus (the production bug) ---")
+    dates = pd.bdate_range("2022-09-05", periods=10)
+    ex = pd.Timestamp("2022-09-13")
+    acts = pd.DataFrame([
+        _syn_act("BAJAJFINSV", "2022-09-13", "split", ratio=5.0),
+        _syn_act("BAJAJFINSV", "2022-09-13", "bonus", ratio=2.0),
+    ])
+    # Raw Close shows NO discontinuity at all -- both the split and the bonus are
+    # already folded in (only an ordinary ~4% daily move survives, like real data).
+    closes_full = [1713.81, 1720.56, 1738.29, 1705.00, 1698.50,
+                   1713.81, 1784.75, 1805.35, 1799.10, 1812.40]
+    raw_full = _syn_prices(dates, closes_full)
+    pre = dates[5]  # 2022-09-12, the bar immediately before the ex-date anchor
+
+    det = detect_prefolded_splits(raw_full, acts, "BAJAJFINSV", include_all_types=True)
+    _check("fully-prefolded: detector verdict FULLY_PREFOLDED for both rows",
+           len(det) == 2 and set(det['verdict']) == {"FULLY_PREFOLDED"},
+           f"got {list(zip(det['action_type'], det['verdict']))}")
+    _check("fully-prefolded: detector withholds BOTH divisors",
+           not det['apply_divisor'].any(), f"got {list(det['apply_divisor'])}")
+
+    adj_full = build_adjusted(raw_full, acts, "BAJAJFINSV", split_policy="auto")
+    _check("fully-prefolded: auto applies NEITHER divisor (CumDivisor stays 1)",
+           abs(float(adj_full.loc[pre, 'CumDivisor']) - 1.0) < 1e-12,
+           f"got {float(adj_full.loc[pre, 'CumDivisor'])}")
+    _check("fully-prefolded: no fabricated jump -- AdjClose tracks raw Close exactly",
+           np.allclose(adj_full['AdjClose'], raw_full['Close']),
+           f"max diff = {float(np.nanmax(np.abs(adj_full['AdjClose'] - raw_full['Close'])))}")
+    _check("fully-prefolded: the ordinary ~4% daily move across the ex-date survives untouched",
+           abs(float(adj_full['AdjClose'].pct_change().loc[ex]) - (1784.75 / 1713.81 - 1.0)) < 1e-9)
+
+
 def _selftest_demerger() -> None:
     print("\n--- demerger R=1.613553 (TMPV-shaped) ---")
     R = 1.613553
@@ -1242,7 +1313,12 @@ def _selftest_strictly_after_boundary() -> None:
     raw = _syn_prices(dates, [100.0] * 6)
     ex = dates[3]
     acts = pd.DataFrame([_syn_act("SYN", ex.strftime("%Y-%m-%d"), "bonus", ratio=2.0)])
-    adj = build_adjusted(raw, acts, "SYN")
+    # This is a boundary-alignment test, not a fold-detection test: the raw series is
+    # deliberately flat (no real discontinuity), so with the detector in play (the
+    # default "auto" policy applies to splits only here, but a flat raw series is
+    # exactly what FULLY_PREFOLDED looks like for a bonus too) the divisor would
+    # correctly be withheld. Force "always" to isolate the boundary-placement logic.
+    adj = build_adjusted(raw, acts, "SYN", split_policy="always")
     div = adj['CumDivisor'].to_numpy()
     _check("boundary: divisor is 2,2,2 before and 1,1,1 from the ex-date on",
            np.allclose(div[:3], 2.0) and np.allclose(div[3:], 1.0),
@@ -1252,7 +1328,7 @@ def _selftest_strictly_after_boundary() -> None:
     sat = dates[2] + pd.Timedelta(days=0)
     weekend_ex = pd.Timestamp("2023-03-11")  # Saturday
     acts2 = pd.DataFrame([_syn_act("SYN", "2023-03-11", "bonus", ratio=2.0)])
-    adj2 = build_adjusted(raw, acts2, "SYN")
+    adj2 = build_adjusted(raw, acts2, "SYN", split_policy="always")
     anchor = _anchor(raw.index, weekend_ex)
     _check("boundary: non-trading ex-date anchors to the next bar",
            anchor == pd.Timestamp("2023-03-13"), f"anchor={anchor}")
@@ -1612,6 +1688,7 @@ def _main() -> int:
     _selftest_volume_policy_flag()
     _selftest_blank_ratio()
     _selftest_detector_both_ways()
+    _selftest_fully_prefolded_combo()
     _selftest_residual_discontinuity()
     _selftest_dividends()
     _selftest_multi_action_chain()

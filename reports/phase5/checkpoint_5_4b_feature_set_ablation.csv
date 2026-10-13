@@ -1,0 +1,13 @@
+features,n_features,scheme,model,ic,ic_t,accuracy,excess_ann,ci05,ci95,sharpe,bench_sharpe,max_dd
+all_24_features,24,block_cv_unseen_stock,ridge,0.0276,1.9448,0.5059,0.105,0.057,0.154,1.9258,1.4639,-0.3579
+all_24_features,24,block_cv_unseen_stock,lgbm,0.0299,2.2841,0.5049,0.0885,0.0435,0.133,1.808,1.4639,-0.3958
+all_24_features,24,walk_forward,ridge,0.0232,1.2182,0.507,0.0335,-0.0269,0.0932,1.2752,1.2621,-0.3849
+all_24_features,24,walk_forward,lgbm,0.03,1.7508,0.5096,0.0542,-0.0037,0.1121,1.3321,1.2621,-0.3858
+without_liquidity_proxies,22,block_cv_unseen_stock,ridge,0.0093,0.6343,0.5012,0.0388,-0.0069,0.0854,1.5817,1.4639,-0.3704
+without_liquidity_proxies,22,block_cv_unseen_stock,lgbm,0.0119,0.9306,0.4965,0.0213,-0.0204,0.0624,1.4345,1.4639,-0.3914
+without_liquidity_proxies,22,walk_forward,ridge,0.0072,0.3417,0.5002,0.0102,-0.0481,0.0691,1.152,1.2621,-0.3941
+without_liquidity_proxies,22,walk_forward,lgbm,0.012,0.6706,0.5082,-0.0147,-0.0734,0.0423,0.9888,1.2621,-0.4253
+price_only_no_liquidity_no_risk,15,block_cv_unseen_stock,ridge,-0.002,-0.1404,0.4988,-0.0144,-0.0608,0.0315,1.2278,1.4639,-0.4066
+price_only_no_liquidity_no_risk,15,block_cv_unseen_stock,lgbm,0.0146,1.126,0.5036,0.0225,-0.0213,0.0668,1.3578,1.4639,-0.3979
+price_only_no_liquidity_no_risk,15,walk_forward,ridge,0.0136,0.6993,0.5038,-0.0123,-0.0677,0.0431,1.0653,1.2621,-0.3807
+price_only_no_liquidity_no_risk,15,walk_forward,lgbm,0.0126,0.723,0.5064,-0.0095,-0.0736,0.054,1.0254,1.2621,-0.391

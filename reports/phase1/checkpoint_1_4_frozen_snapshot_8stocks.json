@@ -1,0 +1,204 @@
+{
+ "checkpoint": "1.4 \u2014 quality report and frozen data snapshot",
+ "scope": "8-stock pilot",
+ "generated_utc": "2026-10-08T10:05:06Z",
+ "frozen_spec": {
+  "universe": "NIFTY100 (pilot subset of 8)",
+  "date_range": "2015-01-01 to present",
+  "holdout_start": "2025-04-01",
+  "labels": "triple barrier +2*ATR / -1*ATR / 10-day timeout, ATR14 min_periods=14",
+  "cost_per_round_trip": 0.0035,
+  "execution": "next-day open"
+ },
+ "known_limitations": [
+  "Survivorship bias: today's NIFTY100 constituents used for the whole history.",
+  "296 uncaught large moves project-wide; only 4 individually web-verified.",
+  "7 phantom flat zero-volume sessions in 2025-2026 remain in the calendar; the backtest marks them non-tradeable but 02c_calendar.py is not yet fixed."
+ ],
+ "files": [
+  {
+   "symbol": "TCS",
+   "kind": "clean",
+   "path": "data/clean/TCS.csv",
+   "present": true,
+   "bytes": 800727,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "523226ac6915c431cceb4f5553683302eaa23de0dc1166f25675bb232834b515"
+  },
+  {
+   "symbol": "TCS",
+   "kind": "labels",
+   "path": "data/labels/TCS.csv",
+   "present": true,
+   "bytes": 248271,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "60fa453600edbb025eb1116dfa706c911649e1258f51a9abb1ec6d8ae5ce2a0e"
+  },
+  {
+   "symbol": "RELIANCE",
+   "kind": "clean",
+   "path": "data/clean/RELIANCE.csv",
+   "present": true,
+   "bytes": 942733,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "e2c700994354ee7282e4fce1fd29e57e40c019c44a41bb6849f3830d6b90404a"
+  },
+  {
+   "symbol": "RELIANCE",
+   "kind": "labels",
+   "path": "data/labels/RELIANCE.csv",
+   "present": true,
+   "bytes": 262469,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "64228ece4de2631b2e14653f2d82f3cab8fef6bd21948cf0b8c0854224127703"
+  },
+  {
+   "symbol": "BAJAJFINSV",
+   "kind": "clean",
+   "path": "data/clean/BAJAJFINSV.csv",
+   "present": true,
+   "bytes": 853706,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "87ff990f3ca3a29e5d0cd2036e860706f2e7cae90bc5d42fb11d98f9e525a11e"
+  },
+  {
+   "symbol": "BAJAJFINSV",
+   "kind": "labels",
+   "path": "data/labels/BAJAJFINSV.csv",
+   "present": true,
+   "bytes": 268416,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "4975cf6508b6ae4b8850880db445476d17162fefc9f52396081cbcf1c35f3e60"
+  },
+  {
+   "symbol": "ITC",
+   "kind": "clean",
+   "path": "data/clean/ITC.csv",
+   "present": true,
+   "bytes": 968143,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "bb76017a5347a2a394622d7972fdc4aa6f3ecf3148a6389128df11940d47ecd7"
+  },
+  {
+   "symbol": "ITC",
+   "kind": "labels",
+   "path": "data/labels/ITC.csv",
+   "present": true,
+   "bytes": 247302,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "d06b8cd323a24b2376cd5c921158ab8ca829ec99644276766c1cbc6983262066"
+  },
+  {
+   "symbol": "SIEMENS",
+   "kind": "clean",
+   "path": "data/clean/SIEMENS.csv",
+   "present": true,
+   "bytes": 957829,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "89f6c00c4630e1f86cf05b05f094abd4bf037aa5590331e8d3cd3eb1f37cf25f"
+  },
+  {
+   "symbol": "SIEMENS",
+   "kind": "labels",
+   "path": "data/labels/SIEMENS.csv",
+   "present": true,
+   "bytes": 245602,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "af1022d65775512c7fdb156e6e851009cf626c602c242ee84e2639225a1d2464"
+  },
+  {
+   "symbol": "VEDL",
+   "kind": "clean",
+   "path": "data/clean/VEDL.csv",
+   "present": true,
+   "bytes": 983706,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "be9ad998177667006daa3cd7efc2dea91498d1caa3803fac82bd08595c587eb0"
+  },
+  {
+   "symbol": "VEDL",
+   "kind": "labels",
+   "path": "data/labels/VEDL.csv",
+   "present": true,
+   "bytes": 247211,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "590323ef854bbdc4481d4b747267b743e097692f9b1c349a3812434c42c0da8b"
+  },
+  {
+   "symbol": "IDEA",
+   "kind": "clean",
+   "path": "data/clean/IDEA.csv",
+   "present": true,
+   "bytes": 944087,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "dbee3a4b8bf0fcc8bd6d84cd8924edffa9387e787bec278b146a95a902f7389f"
+  },
+  {
+   "symbol": "IDEA",
+   "kind": "labels",
+   "path": "data/labels/IDEA.csv",
+   "present": true,
+   "bytes": 252860,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "422d06e4aa4c826a9481be8dcf8920f0ef2a94a95b5aa2e55e1a2289f3bd6b13"
+  },
+  {
+   "symbol": "ADANIENT",
+   "kind": "clean",
+   "path": "data/clean/ADANIENT.csv",
+   "present": true,
+   "bytes": 870193,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "a46f8376dd09a29cddcfc9ce0efef33cfa022fc15a00f7668fd639e2b9656027"
+  },
+  {
+   "symbol": "ADANIENT",
+   "kind": "labels",
+   "path": "data/labels/ADANIENT.csv",
+   "present": true,
+   "bytes": 262448,
+   "rows": 2910,
+   "first_date": "2015-01-01",
+   "last_date": "2026-10-07",
+   "sha256": "766131046f1f88769796207f40b86b1618568cefb04e4eba35a026193183e97c"
+  }
+ ],
+ "reference_files": [
+  {
+   "path": "data/reference/ind_nifty100list.csv",
+   "bytes": 6702,
+   "sha256": "16dbd58a5380d6694c2568036f00022dc52653f48cfbd4895f39dcb2ff513c08"
+  }
+ ],
+ "manifest_digest": "545e56b945ba1fbc223e38a99e065c0f96847889ddaa4e4f055b353de45a3f6d"
+}

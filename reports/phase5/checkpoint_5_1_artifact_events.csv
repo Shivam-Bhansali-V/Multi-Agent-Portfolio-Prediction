@@ -1,0 +1,11 @@
+symbol,ex_date,note
+ADANIENT,2015-06-03,"demerger of ports/power/transmission arms, -38.7% unadjusted"
+ADANIENT,2018-04-05,Adani Green demerger; Yahoo back-adjustment prints +15.0% (found by checker)
+ADANIENT,2018-09-06,Adani Gas demerger; Yahoo back-adjustment prints +21.0% (found by checker)
+ITC,2025-01-06,"ITC Hotels demerger; Yahoo prints -4.55%, holder return from discovered prices is -2.68%"
+CGPOWER,2016-03-15,"consumer-products demerger, partly unadjusted"
+ABB,2019-12-20,"power-grids demerger, unadjusted"
+MOTHERSON,2022-01-14,"wiring-harness demerger, +28.6% mis-adjusted"
+TMPV,2025-10-14,"CV/PV demerger, -40.2% unadjusted (holdout period)"
+TRENT,2026-01-01,-33.0% step = 3:2 bonus adjustment applied from wrong date (holdout period)
+VEDL,2026-04-30,"demerger, -64.9% unadjusted (holdout period)"

@@ -1,0 +1,9 @@
+symbol,total_candidate_dates,kept,up,down,sideways,dropped_purge_window,dropped_post_truncate,dropped_crosses_truncate,dropped_insufficient_atr_warmup,dropped_insufficient_forward_window,truncate_at,purge_windows_in_range
+TCS,2910,2873,829,1624,420,15,0,0,12,10,,2
+RELIANCE,2910,2847,903,1546,398,41,0,0,12,10,,4
+HDFCBANK,2910,2863,853,1559,451,25,0,0,12,10,,3
+ITC,2910,2860,770,1624,466,28,0,0,12,10,,3
+SIEMENS,2910,2509,745,1329,435,12,377,0,12,0,2025-04-07,2
+TATASTEEL,2910,2873,879,1622,372,15,0,0,12,10,,2
+BHARTIARTL,2910,2887,817,1639,431,1,0,0,12,10,,1
+ULTRACEMCO,2910,2887,862,1613,412,0,0,0,13,10,,0

@@ -1,0 +1,22 @@
+pattern,says,direction,period,cases,stocks,worked_pct,failed_pct,no_move_pct,base_worked_pct,base_failed_pct,lift_pp,z,lift_halfA_pp,lift_halfB_pp,avg_trade_pct,base_avg_trade_pct,median_candle_when_worked,worked_by_candle5_pct,worked_by_candle10_pct,verdict
+Hammer,gain,bull,2015-19,505,87,49.901,49.703,0.396,48.821,50.867,1.08,0.485,2.013,0.094,0.039,-0.066,2.0,42.376,47.921,worse than a random day
+Hammer,gain,bull,2020-Mar25,629,95,51.033,48.172,0.795,51.411,48.326,-0.378,-0.19,-3.285,2.74,0.18,0.117,2.0,42.766,48.967,worse than a random day
+Hammer,gain,bull,Apr25-now (holdout),266,94,41.729,58.271,-0.0,48.815,51.009,-7.086,-2.312,-10.58,-2.848,-0.282,-0.03,2.0,36.09,40.602,worse than a random day
+Bullish Engulfing,gain,bull,2015-19,1220,89,51.721,47.951,0.328,48.821,50.867,2.9,2.026,0.29,5.73,0.146,-0.066,3.0,41.557,49.344,no better than a random day
+Bullish Engulfing,gain,bull,2020-Mar25,1262,96,51.981,47.306,0.713,51.411,48.326,0.57,0.405,2.078,-1.114,0.255,0.117,3.0,41.363,50.079,no better than a random day
+Bullish Engulfing,gain,bull,Apr25-now (holdout),498,100,49.197,50.803,0.0,48.815,51.009,0.381,0.17,1.902,-1.082,-0.028,-0.03,3.0,41.767,46.787,no better than a random day
+Doji after downtrend,gain,bull,2015-19,3479,89,49.957,49.784,0.259,48.821,50.867,1.136,1.34,-0.374,2.824,0.017,-0.066,3.0,40.586,48.204,"slightly better than random, not reliable"
+Doji after downtrend,gain,bull,2020-Mar25,3730,96,50.67,49.008,0.322,51.411,48.326,-0.741,-0.906,0.386,-1.888,0.152,0.117,3.0,42.815,49.169,"slightly better than random, not reliable"
+Doji after downtrend,gain,bull,Apr25-now (holdout),1100,100,50.364,49.455,0.182,48.815,51.009,1.548,1.027,2.585,0.378,0.07,-0.03,3.0,42.545,49.091,"slightly better than random, not reliable"
+Inverted Hammer,gain,bull,2015-19,448,85,49.33,50.446,0.223,48.821,50.867,0.509,0.216,1.893,-0.662,0.059,-0.066,3.0,42.188,48.438,"slightly better than random, not reliable"
+Inverted Hammer,gain,bull,2020-Mar25,632,96,49.051,50.475,0.475,51.411,48.326,-2.361,-1.187,-1.136,-3.724,0.031,0.117,3.0,39.082,46.994,"slightly better than random, not reliable"
+Inverted Hammer,gain,bull,Apr25-now (holdout),220,87,51.818,48.182,0.0,48.815,51.009,3.003,0.891,1.054,5.157,0.067,-0.03,3.0,40.455,48.636,"slightly better than random, not reliable"
+Head and Shoulders,loss,bear,2015-19,74,45,39.189,59.459,1.351,50.16,49.529,-10.97,-1.887,-11.049,-11.026,-0.75,0.026,2.0,36.486,37.838,no better than a random day
+Head and Shoulders,loss,bear,2020-Mar25,97,61,46.392,53.608,0.0,47.742,51.996,-1.35,-0.266,0.32,-3.689,-0.462,-0.154,2.0,42.268,45.361,no better than a random day
+Head and Shoulders,loss,bear,Apr25-now (holdout),30,28,46.667,53.333,0.0,50.612,49.212,-3.946,-0.432,-17.572,2.071,-0.073,0.011,4.0,26.667,46.667,no better than a random day
+Bearish Flag,loss,bear,2015-19,308,80,50.0,49.675,0.325,50.16,49.529,-0.16,-0.056,2.75,-2.901,-0.061,0.026,3.0,38.961,48.052,"slightly better than random, not reliable"
+Bearish Flag,loss,bear,2020-Mar25,349,90,51.862,47.851,0.287,47.742,51.996,4.121,1.541,-0.408,8.879,-0.048,-0.154,3.0,42.12,49.57,"slightly better than random, not reliable"
+Bearish Flag,loss,bear,Apr25-now (holdout),98,61,58.163,40.816,1.02,50.612,49.212,7.551,1.495,0.115,14.996,0.494,0.011,3.0,46.939,55.102,"slightly better than random, not reliable"
+Descending Triangle,loss,bear,2015-19,213,81,57.746,42.254,0.0,50.16,49.529,7.587,2.215,8.64,6.628,0.382,0.026,2.0,50.704,56.338,no better than a random day
+Descending Triangle,loss,bear,2020-Mar25,243,88,55.144,44.856,-0.0,47.742,51.996,7.402,2.31,4.819,10.303,0.223,-0.154,2.0,50.617,54.733,no better than a random day
+Descending Triangle,loss,bear,Apr25-now (holdout),99,62,50.505,49.495,-0.0,50.612,49.212,-0.107,-0.021,2.286,-2.233,0.0,0.011,2.0,37.374,49.495,no better than a random day

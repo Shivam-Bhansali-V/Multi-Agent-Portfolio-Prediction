@@ -1,0 +1,15 @@
+,value
+symbols,97
+sessions,2903
+non_session_dates_removed,"['2025-03-18', '2026-01-15', '2026-05-01', '2026-05-28', '2026-06-26', '2026-09-14', '2026-10-02']"
+stale_rows_removed,713
+artifacts_repaired,10
+real_moves_ge15pct_kept,234
+eligible_symbols_at_some_point_in_dev_window,95
+eligible_on_2016_02_01,0
+eligible_on_2025_03_28,95
+CHECK no artifact-sized move left on a listed artifact date,True
+CHECK ITC ex-demerger return equals the known holder return,True
+CHECK index has no missing session,True
+CHECK no non-positive price,True
+CHECK calendar has no duplicate dates and is sorted,True

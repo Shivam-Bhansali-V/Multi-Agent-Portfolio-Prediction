@@ -1,0 +1,6 @@
+model,accuracy,rank_ic,periods,strat_cagr,strat_ann_vol,strat_sharpe,strat_max_dd,excess_ann,excess_ci05,excess_ci95,prob_excess_gt0,share_periods_beating_benchmark,turnover_per_rebalance
+momentum_12_1,0.5154,0.0324,89,0.2673,0.2297,1.1607,-0.2863,0.0235,-0.0369,0.0837,0.7426,0.573,0.2406
+ridge,0.5078,0.0232,89,0.2651,0.227,1.1579,-0.2442,0.0197,-0.0396,0.0777,0.7126,0.5506,0.5548
+lgbm,0.5098,0.03,89,0.2941,0.2467,1.1797,-0.3057,0.0479,-0.0213,0.1145,0.8724,0.5843,0.4657
+"equal_weight_universe (benchmark, net)",,,89,0.246,0.2044,1.1897,-0.2671,,,,,,
+"NIFTY100 price index (no dividends, no costs)",,,89,0.1164,0.1775,0.7158,-0.2735,,,,,,

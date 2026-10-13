@@ -1,0 +1,14 @@
+cluster_id,feature,cluster_size,is_regime_flag,standalone_rule_sharpe,max_intra_cluster_abs_corr,recommended_keeper_if_pruned,recommended_keeper_has_performance_basis
+0,vote_kc_breakout,2,False,-0.0063477421968726,0.7435506709980272,False,True
+0,vote_rsi14,2,False,0.1363355338516617,0.7435506709980272,True,True
+1,vote_cci20,3,False,0.3859861150443432,0.7490106672262729,False,True
+1,vote_stoch,3,False,0.4299211471172733,0.7490106672262729,True,True
+1,vote_willr14,3,False,0.4051642436337702,0.7490106672262729,False,True
+2,vote_ema_cross,1,False,0.8746523875928519,,True,True
+3,vote_adx_trending,1,True,,,True,False
+4,vote_macd,1,False,0.4702048918726537,,True,True
+5,vote_bb,1,False,0.2381438734531682,,True,True
+6,vote_high_vol_regime,1,True,,,True,False
+7,vote_obv_trend,1,False,0.4434620790065871,,True,True
+8,vote_ad_trend,1,False,0.1748391979044891,,True,True
+9,vote_vwpm,1,False,0.7609424586450021,,True,True

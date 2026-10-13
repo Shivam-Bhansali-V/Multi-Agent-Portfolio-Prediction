@@ -1,0 +1,104 @@
+symbol,first_bar_date,last_bar_date,eligible_from,truncate_at,exclude_reason,exclude_detail,total_sessions,pre_holdout_sessions,n_labelled_samples_est
+ABB,2015-01-01,2026-10-07,2015-11-06,2019-12-20,,,2910,2529,2700
+ADANIENSOL,2015-07-31,2026-10-07,2016-06-10,,unadjusted_big_move,"Unexplained moves: 12 big moves, 12 factor steps",2766,2385,2556
+ADANIENT,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 17 big moves, 17 factor steps",2910,2529,2700
+ADANIGREEN,2018-06-18,2026-10-07,2019-04-30,,unadjusted_big_move,"Unexplained moves: 11 big moves, 11 factor steps",2056,1675,1846
+ADANIPORTS,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 5 big moves, 5 factor steps",2910,2529,2700
+ADANIPOWER,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 19 big moves, 18 factor steps",2910,2529,2700
+AMBUJACEM,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 3 big moves, 3 factor steps",2910,2529,2700
+APOLLOHOSP,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+ASIANPAINT,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+AXISBANK,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 2 big moves, 2 factor steps",2910,2529,2700
+BAJAJ-AUTO,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+BAJAJFINSV,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+BAJAJHLDNG,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 2 big moves, 2 factor steps",2910,2529,2700
+BAJFINANCE,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+BANKBARODA,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 7 big moves, 7 factor steps",2910,2529,2700
+BEL,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 2 big moves, 2 factor steps",2910,2529,2700
+BHARTIARTL,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+BOSCHLTD,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+BPCL,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 3 big moves, 3 factor steps",2910,2529,2700
+BRITANNIA,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+BSE,2017-02-03,2026-10-07,2017-12-08,,unadjusted_big_move,"Unexplained moves: 5 big moves, 5 factor steps",2395,2014,2185
+CANBK,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 4 big moves, 4 factor steps",2910,2529,2700
+CGPOWER,2015-01-01,2026-10-07,2015-11-06,2016-03-15,unadjusted_big_move,"Unexplained moves: 7 big moves, 6 factor steps",2910,2529,2700
+CHOLAFIN,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 3 big moves, 3 factor steps",2910,2529,2700
+CIPLA,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+COALINDIA,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+CUMMINSIND,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+DIVISLAB,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 3 big moves, 3 factor steps",2910,2529,2700
+DLF,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 6 big moves, 6 factor steps",2910,2529,2700
+DMART,2017-03-21,2026-10-07,2018-01-22,,,,2365,1984,2155
+DRREDDY,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+EICHERMOT,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+ENRIN,2025-06-19,2026-10-07,2026-04-27,,demerger_child_overlaps_parent,Demerger child entity; listed post-event with 328 bars; overlaps parent exposure,328,0,118
+ETERNAL,2021-07-23,2026-10-07,2022-05-30,,unadjusted_big_move,"Unexplained moves: 2 big moves, 2 factor steps",1293,912,1083
+GAIL,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 2 big moves, 2 factor steps",2910,2529,2700
+GODREJCP,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+GRASIM,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+HAL,2018-04-02,2026-10-07,2019-02-04,,unadjusted_big_move,"Unexplained moves: 3 big moves, 3 factor steps",2110,1729,1900
+HCLTECH,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+HDFCAMC,2018-08-06,2026-10-07,2019-06-20,,unadjusted_big_move,"Unexplained moves: 2 big moves, 2 factor steps",2021,1640,1811
+HDFCBANK,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+HDFCLIFE,2017-11-17,2026-10-07,2018-09-24,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2200,1819,1990
+HINDALCO,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 2 big moves, 2 factor steps",2910,2529,2700
+HINDUNILVR,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+HINDZINC,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 3 big moves, 3 factor steps",2910,2529,2700
+HYUNDAI,2024-10-22,2026-10-07,2025-08-26,,insufficient_history,Only 110 pre-holdout sessions (need 210 for warmup+horizon),491,110,281
+ICICIBANK,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+IDEA,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 33 big moves, 33 factor steps",2910,2529,2700
+INDIAVIX,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 58 big moves, 58 factor steps",2910,2529,2700
+INDIGO,2015-11-10,2026-10-07,2016-09-20,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2698,2317,2488
+INFY,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+IOC,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+IRFC,2021-01-29,2026-10-07,2021-12-07,,unadjusted_big_move,"Unexplained moves: 3 big moves, 3 factor steps",1411,1030,1201
+ITC,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+JINDALSTEL,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 4 big moves, 4 factor steps",2910,2529,2700
+JIOFIN,2023-08-21,2026-10-07,2024-07-02,,,,778,397,568
+JSWSTEEL,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+KOTAKBANK,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+LT,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+LTM,2016-07-21,2026-10-07,2017-05-30,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2528,2147,2318
+M&M,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+MARUTI,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+MAXHEALTH,2020-08-21,2026-10-07,2021-06-25,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",1522,1141,1312
+MAZDOCK,2020-10-12,2026-10-07,2021-08-16,,unadjusted_big_move,"Unexplained moves: 5 big moves, 5 factor steps",1487,1106,1277
+MOTHERSON,2015-01-01,2026-10-07,2015-11-06,2022-01-14,unadjusted_big_move,"Unexplained moves: 5 big moves, 4 factor steps",2910,2529,2700
+MUTHOOTFIN,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 4 big moves, 4 factor steps",2910,2529,2700
+NESTLEIND,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+NIFTY100,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+NIFTY50,2015-01-02,2026-10-07,2015-11-09,,,,2909,2528,2699
+NTPC,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+ONGC,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 4 big moves, 4 factor steps",2910,2529,2700
+PFC,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+PIDILITIND,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+PNB,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 2 big moves, 2 factor steps",2910,2529,2700
+POLYCAB,2019-04-16,2026-10-07,2020-02-25,,unadjusted_big_move,"Unexplained moves: 3 big moves, 3 factor steps",1853,1472,1643
+POWERGRID,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+POWERINDIA,2020-03-30,2026-10-07,2021-02-01,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",1620,1239,1410
+RELIANCE,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+SBILIFE,2017-10-03,2026-10-07,2018-08-03,,,,2232,1851,2022
+SBIN,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+SHRIRAMFIN,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 6 big moves, 6 factor steps",2910,2529,2700
+SIEMENS,2015-01-01,2026-10-07,2015-11-06,2025-04-07,,,2910,2529,2700
+SOLARINDS,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+SUNPHARMA,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+TATACAP,2025-10-13,2026-10-07,2026-08-14,,holdout_only_listing,Listed on 2025-10-13 after holdout start 2025-04-01; 0 pre-holdout history,249,0,39
+TATACONSUM,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+TATAPOWER,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+TATASTEEL,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+TCS,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+TECHM,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+TITAN,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 2 big moves, 2 factor steps",2910,2529,2700
+TMCV,2025-11-12,2026-10-07,2026-09-11,,demerger_child_overlaps_parent,Demerger child entity; listed post-event with 229 bars; overlaps parent exposure,229,0,19
+TMPV,2015-01-01,2026-10-07,2015-11-06,2025-10-14,unadjusted_big_move,"Unexplained moves: 7 big moves, 6 factor steps",2910,2529,2700
+TORNTPHARM,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+TRENT,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 4 big moves, 4 factor steps",2910,2529,2700
+TVSMOTOR,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+ULTRACEMCO,2015-01-01,2026-10-07,2015-11-06,,,,2910,2529,2700
+UNIONBANK,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 3 big moves, 3 factor steps",2910,2529,2700
+VAML,2026-06-15,2026-10-07,,,demerger_child_overlaps_parent,Demerger child entity; listed post-event with 83 bars; overlaps parent exposure,83,0,0
+VBL,2016-11-08,2026-10-07,2017-09-12,,,,2456,2075,2246
+VEDL,2015-01-01,2026-10-07,2015-11-06,2026-04-30,unadjusted_big_move,"Unexplained moves: 5 big moves, 4 factor steps",2910,2529,2700
+WIPRO,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 1 big moves, 1 factor steps",2910,2529,2700
+ZYDUSLIFE,2015-01-01,2026-10-07,2015-11-06,,unadjusted_big_move,"Unexplained moves: 2 big moves, 2 factor steps",2910,2529,2700
